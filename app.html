@@ -1,0 +1,14 @@
+<script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+
+<div id="chart">
+  <h3>
+    {{ chdata.title }}
+  </h3>
+  <ul>
+    <li v-for="browser in chdata.browsers">
+      {{ browser.name }}
+    </li>
+  </ul>
+</div>
+
+<script src="app.js"></script>
