@@ -5,7 +5,8 @@ var chart = new Vue({
 	el: '#chart',
   
   data: { 
-		chdata: null
+		chdata: null,
+    order: -1
 	},
   
   created: function () {

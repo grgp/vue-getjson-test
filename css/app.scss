@@ -1,10 +1,12 @@
-$newnavy: #28618F;
-$darkgray: #303030;
+$darkgray: #606060;
 $darknavy: #223442;
 $offwhite: #f9f9f9;
+$newteal: #4ECDC4;
+$neworange: #F99E05;
 
 body {
-  background-color: $newnavy;
+  background-color: $newteal;
+  font-family: 'Open Sans';
 }
 
 h1 {
@@ -30,8 +32,17 @@ li {
 
 .well {
   margin-top: 80px;
-  padding: 40px;
+  padding: 50px;
   background-color: $offwhite;
+  color: $darkgray !important;
+}
+
+.b-reverse {
+  margin: 0;
+  margin-top: 20px;
+  font-weight: 600;
+  background-color: $newteal;
+  color: white;
 }
 
 table {
@@ -40,12 +51,15 @@ table {
     font-size: 14px;
     padding: 5px;
     padding-right: 15px;
+    color: $darkgray !important;   
   }
 }
 
 /* [chart] percentage */
 
 .graph {
+  margin-top: 15px;
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -68,8 +82,8 @@ table {
 .percentage {
   font-size: .8em;
   line-height: 1;
-  text-transform: uppercase;
   width: 100%;
+  max-width: 100%;
   height: 30px;
   margin-left: 130px;
   background: repeating-linear-gradient(
@@ -83,7 +97,7 @@ table {
   &:after {
     content: "";
     display: block;
-    background-color: #3d9970;
+    background-color: $newteal;
     width: 50px;
     margin-bottom: 4px;
     height: 60%;
@@ -96,7 +110,7 @@ table {
   &:hover,
   &:focus {
     &:after {
-       background-color: #aaa; 
+       background-color: $neworange; 
     }
   }
 }
@@ -108,4 +122,10 @@ table {
       width: $value;
     }
   }
+}
+
+.browser-move {
+  /* applied to the element when moving */
+  transition: transform .8s cubic-bezier(.55,0,.1,1);
+  /* transition: transform opacity .6s ease-in-out; */
 }
