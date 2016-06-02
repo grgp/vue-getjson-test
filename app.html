@@ -1,48 +1,52 @@
 <head>
 		<meta charset="utf-8"/>
 		<title>App</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/app.css">
-		<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 	</head>
+<body>
+	<script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
 
-<script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
+	<div id="chart" class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+			  <div class="well">
+			  	<div class="text-center">
+					  <h1>{{ chdata.title }}</h1>
+					  <h3>{{ chdata.city }}</h3>
+					  <h3>{{ chdata.date }}</h3>
+				  </div>
 
-<div id="chart">
-  
-  <h1>{{ chdata.title }}</h1>
-  <h3>{{ chdata.city }}</h3>
-  <h3>{{ chdata.date }}</h3>
-  <ul>
-    <li v-for="browser in chdata.browsers | orderBy 'usage' -1">
-      {{ browser.name }}
-      {{ browser.usage }}%
-    </li>
-  </ul>
+					<div>
+						<ul class="graph">
+							<li v-for="browser in chdata.browsers | orderBy 'usage' -1" 
+									class="percentage percentage-{{ Math.ceil(browser.usage )}}">
+								<span class="text">
+									{{ browser.name }}: {{ browser.usage }}%
+								</span>
+							</li>
+						</ul>
+					</div>
 
-	<div class="graph">
-		<ul>
-			<li v-for="browser in chdata.browsers | orderBy 'usage' -1" 
-					class="percentage percentage-{{ Math.ceil(browser.usage )}}">
-				<span class="text">
-					{{ browser.name }}: {{ browser.usage }}
-				</span>
-			</li>
-		</ul>
+					<table>
+						<tr>
+							<th v-for="browser in chdata.browsers | orderBy 'usage'">
+								{{ browser.name }}
+							</th>
+						</tr>
+						<tr>
+							<td v-for="browser in chdata.browsers | orderBy 'usage'">
+								{{ browser.usage }}%
+							</td>
+						</tr>
+					</table>
+
+				</div>
+			</div>
+		</div>
 	</div>
 
-	<table>
-		<tr>
-			<th v-for="browser in chdata.browsers | orderBy 'usage'">
-				{{ browser.name }}
-			</th>
-		</tr>
-		<tr>
-			<td v-for="browser in chdata.browsers | orderBy 'usage'">
-				{{ browser.usage }}%
-			</td>
-		</tr>
-	</table>
-
-</div>
-
-<script src="app.js"></script>
+	<script src="app.js"></script>
+</body>
