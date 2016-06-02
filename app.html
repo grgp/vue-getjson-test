@@ -1,14 +1,48 @@
+<head>
+		<meta charset="utf-8"/>
+		<title>App</title>
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+		<link href='https://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+	</head>
+
 <script src="https://cdn.jsdelivr.net/vue/latest/vue.js"></script>
 
 <div id="chart">
-  <h3>
-    {{ chdata.title }}
-  </h3>
+  
+  <h1>{{ chdata.title }}</h1>
+  <h3>{{ chdata.city }}</h3>
+  <h3>{{ chdata.date }}</h3>
   <ul>
-    <li v-for="browser in chdata.browsers">
+    <li v-for="browser in chdata.browsers | orderBy 'usage' -1">
       {{ browser.name }}
+      {{ browser.usage }}%
     </li>
   </ul>
+
+	<div class="graph">
+		<ul>
+			<li v-for="browser in chdata.browsers | orderBy 'usage' -1" 
+					class="percentage percentage-{{ Math.ceil(browser.usage )}}">
+				<span class="text">
+					{{ browser.name }}: {{ browser.usage }}
+				</span>
+			</li>
+		</ul>
+	</div>
+
+	<table>
+		<tr>
+			<th v-for="browser in chdata.browsers | orderBy 'usage'">
+				{{ browser.name }}
+			</th>
+		</tr>
+		<tr>
+			<td v-for="browser in chdata.browsers | orderBy 'usage'">
+				{{ browser.usage }}%
+			</td>
+		</tr>
+	</table>
+
 </div>
 
 <script src="app.js"></script>
